@@ -12,6 +12,7 @@ app.on("window-all-closed", function(a) {
 function init() {
 
     global.clibWindow = require("./window");
+    global.appConfig = require("./appConfig");
     global.clibWindow.loadPage('index.html');
     global.clibWindow.show();
 

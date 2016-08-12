@@ -1,5 +1,6 @@
 //test
 var path = require("path"),
+    fs = require('fs'),
     app = require('electron').app,
     //iconPath = path.join(__dirname, config.getIconPath()),
     BrowserWindow = require("electron").BrowserWindow,

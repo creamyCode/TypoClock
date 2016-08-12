@@ -34,8 +34,11 @@ class Clock extends React.Component {
   }
 
   appClose() {
-    var win = window.require('electron').remote.getCurrentWindow();
-    win.close();
+    //var win = window.require('electron').remote.getCurrentWindow();
+    window.require('electron').ipcRenderer.send('closeClock', {
+      x : window.screenX,
+      y : window.screenY
+    });
   }
 
   render() {
