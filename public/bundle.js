@@ -54,17 +54,15 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _App = __webpack_require__(175);
+	var _Clock = __webpack_require__(175);
 
-	var _App2 = _interopRequireDefault(_App);
+	var _Clock2 = _interopRequireDefault(_Clock);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var rootElement = document.getElementById('root');
 
-	setInterval(function () {
-	  _reactDom2.default.render(_react2.default.createElement(_App2.default, { date: new Date() }), rootElement);
-	}, 500);
+	_reactDom2.default.render(_react2.default.createElement(_Clock2.default, null), rootElement);
 
 /***/ },
 /* 1 */
@@ -21502,16 +21500,56 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var App = function (_React$Component) {
-	  _inherits(App, _React$Component);
+	var Clock = function (_React$Component) {
+	  _inherits(Clock, _React$Component);
 
-	  function App() {
-	    _classCallCheck(this, App);
+	  function Clock(props) {
+	    _classCallCheck(this, Clock);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Clock).call(this, props));
+
+	    _this.setTime = _this.setTime.bind(_this);
+	    _this.appClose = _this.appClose.bind(_this);
+	    _this.state = { date: new Date() };
+	    return _this;
 	  }
 
-	  _createClass(App, [{
+	  // 컴포넌트가 DOM 트리에 추가되기 전 한 번만 호출
+
+
+	  _createClass(Clock, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {}
+	    // ....
+
+
+	    // 컴포넌트가 DOM 트리에 추가된 상태에 호출
+
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+
+	      this.timer = setInterval(function () {
+	        this.setTime(new Date());
+	      }.bind(this), 1000);
+	    }
+	  }, {
+	    key: 'componentWillUnMount',
+	    value: function componentWillUnMount() {
+	      clearInterval(this.interval);
+	    }
+	  }, {
+	    key: 'setTime',
+	    value: function setTime(date) {
+	      this.setState({ date: date });
+	    }
+	  }, {
+	    key: 'appClose',
+	    value: function appClose() {
+	      var win = window.require('electron').remote.getCurrentWindow();
+	      win.close();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 
@@ -21554,17 +21592,24 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'end' },
+	          { onClick: this.appClose, className: 'end' },
 	          _react2.default.createElement('i', { className: 'fa fa-times' })
 	        )
 	      );
 	    }
 	  }]);
 
-	  return App;
+	  return Clock;
 	}(_react2.default.Component);
 
-	exports.default = App;
+	// data validate
+
+
+	Clock.propTypes = {
+	  date: _react2.default.PropTypes.object
+	};
+
+	exports.default = Clock;
 
 /***/ },
 /* 176 */
@@ -21582,8 +21627,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./App.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./App.css");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./Clock.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./Clock.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -21601,7 +21646,7 @@
 
 
 	// module
-	exports.push([module.id, "h1 {\r\n  color : red\r\n}\r\n", ""]);
+	exports.push([module.id, "html, body {\r\n    background: rgba(0, 0, 0, 0)!important;\r\n\r\n}\r\nbody {\r\n  overflow: hidden;\r\n}\r\ndiv {\r\n  color: white;\r\n  font-weight: bold;\r\n  font-family: 'Roboto', sans-serif;\r\n}\r\n.clock {\r\n  position: relative;;\r\n}\r\n.clock .left {\r\n  position: absolute;\r\n  top:0px;\r\n  left:0px;\r\n  -webkit-app-region: drag;\r\n}\r\n.clock .right {\r\n  position: absolute;\r\n  top:0px;\r\n  left:150px;\r\n  -webkit-app-region: drag;\r\n}\r\n.clock .end {\r\n  cursor: pointer;\r\n  position: absolute;\r\n  background: white;\r\n  top:0px;\r\n  left:280px;\r\n  color:black;\r\n  border-radius: 50%;\r\n  width: 15px;\r\n  text-align: center;\r\n  line-height: 15px;\r\n}\r\n.clock .tpYear {\r\n  font-size: 40px;\r\n  line-height: 32px;\r\n}\r\n.clock .tpTime {\r\n  font-size: 37px;\r\n  line-height: 32px;\r\n}\r\n.clock .tpMonth {\r\n  font-size: 30px;\r\n  line-height: 25px;\r\n}\r\n.clock .tpDays {\r\n  font-size: 117px;\r\n  line-height: 88px;\r\n  letter-spacing: -6px;\r\n}\r\n", ""]);
 
 	// exports
 

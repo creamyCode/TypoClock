@@ -13,19 +13,20 @@ div {
 .clock {
   position: relative;;
 }
-.left {
+.clock .left {
   position: absolute;
   top:0px;
   left:0px;
   -webkit-app-region: drag;
 }
-.right {
+.clock .right {
   position: absolute;
   top:0px;
   left:150px;
   -webkit-app-region: drag;
 }
-.end {
+.clock .end {
+  cursor: pointer;
   position: absolute;
   background: white;
   top:0px;
@@ -36,19 +37,19 @@ div {
   text-align: center;
   line-height: 15px;
 }
-.tpYear {
+.clock .tpYear {
   font-size: 40px;
   line-height: 32px;
 }
-.tpTime {
+.clock .tpTime {
   font-size: 37px;
   line-height: 32px;
 }
-.tpMonth {
+.clock .tpMonth {
   font-size: 30px;
   line-height: 25px;
 }
-.tpDays {
+.clock .tpDays {
   font-size: 117px;
   line-height: 88px;
   letter-spacing: -6px;

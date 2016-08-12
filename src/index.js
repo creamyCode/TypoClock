@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import Clock from './components/Clock';
 const rootElement = document.getElementById('root');
 
-setInterval(function() {
-  ReactDOM.render(<App date={new Date()}/>, rootElement);
-},500);
+ReactDOM.render(<Clock/>, rootElement);
