@@ -1,0 +1,55 @@
+html, body {
+    background: rgba(0, 0, 0, 0)!important;
+
+}
+body {
+  overflow: hidden;
+}
+div {
+  color: white;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
+.clock {
+  position: relative;;
+}
+.left {
+  position: absolute;
+  top:0px;
+  left:0px;
+  -webkit-app-region: drag;
+}
+.right {
+  position: absolute;
+  top:0px;
+  left:150px;
+  -webkit-app-region: drag;
+}
+.end {
+  position: absolute;
+  background: white;
+  top:0px;
+  left:280px;
+  color:black;
+  border-radius: 50%;
+  width: 15px;
+  text-align: center;
+  line-height: 15px;
+}
+.tpYear {
+  font-size: 40px;
+  line-height: 32px;
+}
+.tpTime {
+  font-size: 37px;
+  line-height: 32px;
+}
+.tpMonth {
+  font-size: 30px;
+  line-height: 25px;
+}
+.tpDays {
+  font-size: 117px;
+  line-height: 88px;
+  letter-spacing: -6px;
+}
