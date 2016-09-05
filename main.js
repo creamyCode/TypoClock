@@ -11,9 +11,13 @@ app.on("window-all-closed", function(a) {
 
 function init() {
 
-    global.clibWindow = require("./window");
     global.appConfig = require("./appConfig");
-    global.clibWindow.loadPage('index.html');
-    global.clibWindow.show();
+    global.appConfig.p_configLoad()
+    .then(function() {
+      global.clibWindow = require("./window");
+      global.clibWindow.loadPage('index.html');
+      global.clibWindow.show();
+      global.note = require("./note");
+    });
 
 }

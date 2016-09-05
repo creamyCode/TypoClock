@@ -1,17 +1,11 @@
-html, body {
-    background: rgba(0, 0, 0, 0)!important;
-
-}
-body {
-  overflow: hidden;
-}
-div {
+.clock {
+  position: relative;;
   color: white;
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
-}
-.clock {
-  position: relative;;
+  height: 88px;
+  margin:10px 10px 5px 10px;
+  overflow: hidden;
 }
 .clock .left {
   position: absolute;

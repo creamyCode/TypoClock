@@ -8,7 +8,14 @@ class Clock extends React.Component {
     super(props);
     this.setTime = this.setTime.bind(this);
     this.appClose = this.appClose.bind(this);
-    this.state = {date: new Date()};
+    this.onMouseOver = this.onMouseOver.bind(this);
+    this.onMouseOut = this.onMouseOut.bind(this);
+    this.closeStyle = this.closeStyle.bind(this);
+    this.state = {
+      date: new Date(),
+      mouseover: false
+    };
+
   }
 
   // 컴포넌트가 DOM 트리에 추가되기 전 한 번만 호출
@@ -36,9 +43,26 @@ class Clock extends React.Component {
   appClose() {
     //var win = window.require('electron').remote.getCurrentWindow();
     window.require('electron').ipcRenderer.send('closeClock', {
+      type : 'Main',
       x : window.screenX,
       y : window.screenY
     });
+  }
+
+  onMouseOver() {
+    this.setState({ mouseover:true });
+  }
+
+  onMouseOut() {
+    this.setState({ mouseover:false });
+  }
+
+  closeStyle() {
+      if (this.state.mouseover) {
+        return { display: "block" }
+      } else {
+        return { display: "none" }
+      }
   }
 
   render() {
@@ -50,7 +74,7 @@ class Clock extends React.Component {
       var day = 'tpDay';
 
       return (
-              <div className="clock">
+              <div className="clock" onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>
                 <div className="left">
                   <div className={year}>{moment(this.props.date).format('YYYY')}</div>
                   <div className={month}>{moment(this.props.date).format('MMMM')}</div>
@@ -59,7 +83,7 @@ class Clock extends React.Component {
                 <div className="right">
                   <div className={days}>{moment(this.props.date).format('DD')}</div>
                 </div>
-                <div onClick={this.appClose} className="end">
+                <div onClick={this.appClose} className="end" style={this.closeStyle()}>
                   <i className="fa fa-times"></i>
                 </div>
               </div>

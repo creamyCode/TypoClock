@@ -5,20 +5,20 @@ var path = require("path"),
     //iconPath = path.join(__dirname, config.getIconPath()),
     BrowserWindow = require("electron").BrowserWindow,
     mainWindow = new BrowserWindow({
-        x: 1578,
-        y: 30,
-        width: 300,
+        x: global.appConfig.getMainPos() != undefined ? global.appConfig.getMainPos().x : 1570,
+        y: global.appConfig.getMainPos() != undefined ? global.appConfig.getMainPos().y : 60,
+        width: 320,
         resizable: false,
-        height: 100,
-        minWidth: 300,
-        minHeight: 100,
+        height: 140,
+        minWidth: 320,
+        minHeight: 140,
         transparent: true,
         toolbar: false,
         frame: false,
         //backgroundColor : '#80FFFFFF',
         //icon: iconPath,
         show: !1,
-        title: "Openclib"
+        title: "TypoClock"
     });
 
 global.quit = true;
