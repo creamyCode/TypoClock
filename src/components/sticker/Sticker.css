@@ -1,0 +1,38 @@
+.sticker-default {
+  background-color: lightgrey;
+  height: 100%;
+}
+
+.stickerBtn {
+  font-size: 25px;
+  cursor: pointer;;
+}
+
+#stickerMenu {
+  padding : 10px;
+  background-color: darkgrey;
+}
+
+#stickerContents {
+  padding : 10px;
+}
+
+.menuBar {
+  -webkit-app-region: drag;
+}
+
+textarea {
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  background: none;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+/*
+::-webkit-resizer {
+	display:none;
+}
+*/

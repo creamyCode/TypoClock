@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <meta charset="UTF-8">
+      <title>Sticker</title>
+      <link rel="import" href="asset.html">
+      <script src="sticker.js"></script>
+   </head>
+
+   <body>
+      <div class="layout-column sticker-default">
+        <div class="layout-row" id="stickerMenu">
+          <div class="layout-row flex-none">
+            <i class="plusBtn stickerBtn fa fa-plus" aria-hidden="true"></i>
+          </div>
+          <div class="menuBar flex">
+          </div>
+          <div class="layout-row layout-align-end-center flex-none">
+            <i class="closeBtn stickerBtn fa fa-times" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="flex" id="stickerContents">
+          <textarea class="flex"></textarea>
+        </div>
+      </div>
+   </body>
+
+  <script>
+    $('textarea').perfectScrollbar();
+
+    $(document).on('click', '.closeBtn', function() {
+      var win = window.require('electron').remote.getCurrentWindow();
+      win.close();
+    });
+  </script>
+</html>

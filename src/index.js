@@ -1,7 +1,7 @@
 import './main.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Clock from './components/Clock';
+import Clock from './components/clock/Clock';
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(<Clock/>, rootElement);

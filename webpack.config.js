@@ -1,9 +1,12 @@
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+      clock : './src/index.js',
+      sticker : './src/components/sticker/sticker.js'
+    },
 
     output: {
         path: __dirname + '/public/',
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
 
     devServer: {

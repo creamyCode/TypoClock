@@ -17,7 +17,7 @@ function init() {
       global.clibWindow = require("./window");
       global.clibWindow.loadPage('index.html');
       global.clibWindow.show();
-      global.note = require("./note");
+      global.sticker = require("./sticker");
     });
 
 }

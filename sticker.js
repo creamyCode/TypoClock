@@ -11,13 +11,14 @@ ipcMain.on('noteShow', (event, noticeData) => {
 // 노트 윈도우 생성
 function makeNoteWindow(data) {
 
-    const modalPath = "file://" + __dirname + "/public/note.html";
+    const modalPath = "file://" + __dirname + "/public/sticker.html";
     var win = new BrowserWindow({
         //title: '#clibNotice',
         //autoHideMenuBar: true,
         center: true,
         width: 400,
         height: 400,
+        frame: false,
         webPreferences : {
           webSecurity : false
         }
