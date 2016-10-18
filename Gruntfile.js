@@ -1,9 +1,6 @@
 module.exports = function(grunt) {
 
-  var path = require('path');
-  const packageJson = require(path.resolve(__dirname, 'package.json'));
-  const rootPath = __dirname;
-
+// 플러그인 명세
   [
     'grunt-exec'
   ].forEach(function(task){
@@ -14,27 +11,19 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
       'exec': {
+        // 일렉트론 패키징 과정
         'x64-packager': {
           command: "electron-packager . TestApp --overwrite --asar --platform win32 --arch x64 --out dist/ --icon favicon.ico --ignore=.gitignore --ignore=Gruntfile.js --ignore=webpack.config.js --ignore=installer.js",
           stdout: true,
           stderr: true
         },
+        // 일렉트론 인스톨러 빌드
         'x64-installer': {
           command: "node ./installer.js x64",
           stdout: true,
           stderr: true
         }
       }
-      // 'create-windows-installer': {
-      //   x64: {
-      //     appDirectory: './dist/TestApp-win32-x64',
-      //     outputDirectory: './dist/installer',
-      //     authors: 'creamyCode',
-      //     exe: 'TestApp.exe',
-      //     overwrite: true,
-      //     setup_icon : './favicon.png'
-      //   }
-      // }
 
   });
 
